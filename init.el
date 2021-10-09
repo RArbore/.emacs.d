@@ -252,5 +252,13 @@
 ;; Dashboard
 (use-package dashboard
   :ensure t
+  :init
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-startup-banner "~/.emacs.d/emacs-dash.png")
+  (setq dashboard-center-content t)
+  (setq dashboard-items '((recents . 5)
+                          (agenda . 5 )
+                          (bookmarks . 3)))
   :config
   (dashboard-setup-startup-hook))
