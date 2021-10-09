@@ -81,3 +81,5 @@
 (doom-modeline-mode)
 (use-package all-the-icons
   :ensure t)
+(set-face-background 'mode-line "#222222")
+(set-face-foreground 'mode-line "#F92672")
