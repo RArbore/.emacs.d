@@ -35,8 +35,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files nil)
  '(package-selected-packages
-   '(dashboard magit markdown-mode general gcmh hide-mode-line doom-modeline which-key melancholy-theme use-package evil-collection)))
+   '(projectile toc-org org-bullets dashboard magit markdown-mode general gcmh hide-mode-line doom-modeline which-key melancholy-theme use-package evil-collection)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -262,3 +263,51 @@
                           (bookmarks . 3)))
   :config
   (dashboard-setup-startup-hook))
+
+;; Org mode
+(add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-directory "~/Documents/Org/"
+      org-agenda-files '("~/Documents/Org/Agenda.org")
+      org-default-notes-file (expand-file-name "notes.org" org-directory)
+      org-ellipsis " ▼ "
+      org-log-done 'time
+      org-journal-dir "~/Documents/Org/journal/"
+      org-journal-date-format "%B %d, %Y (%A) "
+      org-journal-file-format "%Y-%m-%d.org"
+      org-hide-emphasis-markers t)
+(setq org-src-preserve-indentation nil
+      org-src-tab-acts-natively t
+      org-edit-src-content-indentation 0)
+(use-package org-bullets
+  :ensure t)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(setq org-todo-keywords
+        '((sequence
+           "TODO(t)"
+           "BLOG(b)"
+           "GYM(g)"
+           "PROJ(p)"
+           "VIDEO(v)"
+           "WAIT(w)"
+           "|"
+           "DONE(d)"
+           "CANCELLED(c)")))
+(setq org-src-fontify-natively t
+    org-src-tab-acts-natively t
+    org-confirm-babel-evaluate nil
+    org-edit-src-content-indentation 0)
+(use-package toc-org
+  :ensure t
+  :commands toc-org-enable
+  :init (add-hook 'org-mode-hook 'toc-org-enable))
+(setq org-blank-before-new-entry (quote ((heading . nil)
+                                         (plain-list-item . nil))))
+
+;; Projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode 1))
+
+;; Backup files
+(setq backup-directory-alist `(("." . "~/.local/saves")))
