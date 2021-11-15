@@ -3,8 +3,8 @@
 
 (let ((my-active       "#C678DD")
        (my-visited      "#888A90")
-       (my-info         "#ECBE7B")
-       (my-highlight    "#98BE65")
+       (my-info         "#98BE65")
+       (my-highlight    "#ECBE7B")
        (my-contrast     "#54595e")
        (my-deepcontrast "#4A5065")
        (my-hicontrast   "#DFDFDF")
