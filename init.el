@@ -30,9 +30,8 @@
 	     (evil-collection-init))
 
 ;; Theme
-(use-package melancholy-theme
-  :ensure t)
-(load-theme 'melancholy t)
+(add-to-list 'custom-theme-load-path "/home/russel/.emacs.d/packages")
+(load-theme 'russel t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -41,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh hide-mode-line doom-modeline which-key melancholy-theme use-package evil-collection)))
+   '(rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh hide-mode-line doom-modeline which-key melancholy-theme use-package evil-collection)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -334,4 +333,10 @@
 		)
 		load-path))
 (load "powerline")
-(powerline-evil-theme)
+(powerline-russel-evil-theme)
+
+;; Rainbow mode
+(use-package rainbow-mode
+  :ensure t
+  :config
+  (rainbow-mode))
