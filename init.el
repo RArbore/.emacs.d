@@ -1,3 +1,6 @@
+(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+(setq debug-on-error t)
+
 ;; MELPA packages
 (require 'package)
 (add-to-list 'package-archives
@@ -26,10 +29,11 @@
 	     :config
 	     (evil-collection-init))
 
-;; Custom themes
+;; Theme
 (use-package melancholy-theme
   :ensure t)
 (load-theme 'melancholy t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,7 +41,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(projectile toc-org org-bullets dashboard magit markdown-mode general gcmh hide-mode-line doom-modeline which-key melancholy-theme use-package evil-collection)))
+   '(powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh hide-mode-line doom-modeline which-key melancholy-theme use-package evil-collection)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -237,18 +241,22 @@
 
 ;; Window keybindings
 (winner-mode 1)
-(nvmap :prefix "SPC"
-       "w c"   '(evil-window-delete :which-key "Close window")
-       "w n"   '(evil-window-new :which-key "New window")
-       "w s"   '(evil-window-split :which-key "Horizontal split window")
-       "w v"   '(evil-window-vsplit :which-key "Vertical split window")
-       "w h"   '(evil-window-left :which-key "Window left")
-       "w j"   '(evil-window-down :which-key "Window down")
-       "w k"   '(evil-window-up :which-key "Window up")
-       "w l"   '(evil-window-right :which-key "Window right")
-       "w w"   '(evil-window-next :which-key "Goto next window")
-       "w <left>"  '(winner-undo :which-key "Winner undo")
-       "w <right>" '(winner-redo :which-key "Winner redo"))
+(define-key evil-motion-state-map " " nil)
+(define-key evil-motion-state-map (kbd "SPC w c") 'evil-window-delete)
+(define-key evil-motion-state-map (kbd "SPC w n") 'evil-window-new)
+(define-key evil-motion-state-map (kbd "SPC w s") 'evil-window-split)
+(define-key evil-motion-state-map (kbd "SPC w v") 'evil-window-vsplit)
+(define-key evil-motion-state-map (kbd "SPC w h") 'evil-window-left)
+(define-key evil-motion-state-map (kbd "SPC w j") 'evil-window-down)
+(define-key evil-motion-state-map (kbd "SPC w k") 'evil-window-up)
+(define-key evil-motion-state-map (kbd "SPC w l") 'evil-window-right)
+(define-key evil-motion-state-map (kbd "SPC w H") 'evil-window-move-far-left)
+(define-key evil-motion-state-map (kbd "SPC w J") 'evil-window-move-very-bottom)
+(define-key evil-motion-state-map (kbd "SPC w K") 'evil-window-move-very-top)
+(define-key evil-motion-state-map (kbd "SPC w L") 'evil-window-move-far-right)
+(define-key evil-motion-state-map (kbd "SPC w w") 'evil-window-next)
+(define-key evil-motion-state-map (kbd "SPC w <left>") 'winner-undo)
+(define-key evil-motion-state-map (kbd "SPC w <right>") 'winner-redo)
 
 ;; Dashboard
 (use-package dashboard
@@ -311,3 +319,19 @@
 
 ;; Backup files
 (setq backup-directory-alist `(("." . "~/.local/saves")))
+
+;; C tabbing
+(setq-default c-basic-offset 4)
+
+;; Haskell Mode
+(use-package haskell-mode
+  :ensure t)
+
+;; Powerline
+(setq load-path
+	(append (list
+       		"/home/russel/.emacs.d/packages/powerline"
+		)
+		load-path))
+(load "powerline")
+(powerline-evil-theme)
