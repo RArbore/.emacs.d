@@ -40,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh hide-mode-line doom-modeline which-key melancholy-theme use-package evil-collection)))
+   '(rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -95,13 +95,8 @@
 (line-number-mode)
 (column-number-mode)
 (size-indication-mode)
-(use-package doom-modeline
-  :ensure t)
-(doom-modeline-mode)
 (use-package all-the-icons
   :ensure t)
-(set-face-background 'mode-line "#222222")
-(set-face-foreground 'mode-line "#F92672")
 
 ;; VTerm
 (use-package vterm
@@ -268,9 +263,10 @@
   (setq dashboard-set-navigator t)
   (setq dashboard-items '((recents . 10)
                           (agenda . 5 )
-                          (bookmarks . 3)))
-  :config
-  (dashboard-setup-startup-hook))
+                          (bookmarks . 3))))
+
+;; Load newer files
+(setq load-prefer-newer t)
 
 ;; Org mode
 (add-hook 'org-mode-hook 'org-indent-mode)
