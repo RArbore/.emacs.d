@@ -265,7 +265,8 @@
   (setq dashboard-set-file-icons t)
   (setq dashboard-startup-banner "~/.emacs.d/emacs-dash.png")
   (setq dashboard-center-content t)
-  (setq dashboard-items '((recents . 5)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-items '((recents . 10)
                           (agenda . 5 )
                           (bookmarks . 3)))
   :config
@@ -340,3 +341,19 @@
   :ensure t
   :config
   (rainbow-mode))
+
+;; Scratch
+(defun scratch ()
+  "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+  (interactive)
+  (let ((n 0)
+        bufname)
+    (while (progn
+             (setq bufname (concat "*scratch"
+                                   (if (= n 0) "" (int-to-string n))
+                                   "*"))
+             (setq n (1+ n))
+             (get-buffer bufname)))
+  (switch-to-buffer (get-buffer-create bufname))
+  (if (= n 1) initial-major-mode))) ; 1, because n was incremented
+(global-set-key (kbd "C-c s") 'scratch)

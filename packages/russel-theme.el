@@ -11,7 +11,7 @@
        (my-shadow       "#21242b")
        (my-pop          "#2C97F4")
        (my-warning      "#FFA979")
-       (my-btw          "#FF4066")
+       (my-btw          "#F74C66")
        (my-white        "#E7E7E7")
       )
 
@@ -155,7 +155,14 @@
     `(speedbar- ((t :foreground ,my-active )))
     `(speedbar-button-face ((t :foreground ,my-highlight )))
 
-
+    ;; Mode-line
+    ;; =======================================
+    `(mode-line ((t (:background ,my-deepcontrast 
+		     :foreground ,my-contrast))))
+    `(mode-line-inactive ((t (:background ,my-deepcontrast 
+		     :foreground ,my-contrast))))
+    `(mode-line-buffer-id ((t (:weight bold))))
+    `(mode-line-emphasis ((t (:weight bold))))
 
 ;; The End
   ;; =========================================
