@@ -272,10 +272,10 @@
 (add-hook 'org-mode-hook 'org-indent-mode)
 (setq org-directory "~/Documents/Org/"
       org-agenda-files '("~/Documents/Org/Agenda.org")
-      org-default-notes-file (expand-file-name "notes.org" org-directory)
+      org-default-notes-file (expand-file-name "Notes.org" org-directory)
       org-ellipsis " ▼ "
       org-log-done 'time
-      org-journal-dir "~/Documents/Org/journal/"
+      org-journal-dir "~/Documents/Org/Journal/"
       org-journal-date-format "%B %d, %Y (%A) "
       org-journal-file-format "%Y-%m-%d.org"
       org-hide-emphasis-markers t)
