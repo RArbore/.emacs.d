@@ -323,10 +323,10 @@
 (use-package haskell-mode
   :ensure t)
 
-;; Powerline
+;; Powerline / modeline
 (setq load-path
 	(append (list
-       		"/home/russel/.emacs.d/packages/powerline"
+       		"/home/russel/.emacs.d/packages"
 		)
 		load-path))
 (load "powerline")
