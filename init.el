@@ -50,15 +50,14 @@
 
 ;; Fonts
 (set-face-attribute 'default nil
-		    :font "Fira Mono 12"
+		    :height 120
 		    :weight 'medium)
 (set-face-attribute 'variable-pitch nil
-		    :font "Fira Mono 12"
+		    :height 120
 		    :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
-		    :font "Fira Mono 12"
+		    :height 120
 		    :weight 'medium)
-(add-to-list 'default-frame-alist '(font . "Fira Mono 12"))
 
 ;; Zoom
 (global-set-key (kbd "C-=") 'text-scale-increase)

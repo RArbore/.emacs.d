@@ -415,7 +415,7 @@
                           (mode-line-debug-control)
                         " ")
                       face1)
-                     (powerline-recursive-left face1)
+                     ;;(powerline-recursive-left face1)
                      (powerline-major-mode face1)
                      ;;(powerline-process face1)
                      ;;(powerline-minor-modes face1 'l)
