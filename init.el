@@ -40,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection)))
+   '(flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -318,9 +318,18 @@
 ;; C tabbing
 (setq-default c-basic-offset 4)
 
-;; Haskell Mode
+;; Flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+;; Haskell
 (use-package haskell-mode
   :ensure t)
+(add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(setq haskell-process-type 'cabal-repl)
+(setq flycheck-ghc-args '("-dynamic"))
 
 ;; Powerline / modeline
 (setq load-path
