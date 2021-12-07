@@ -40,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection)))
+   '(flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -225,6 +225,22 @@
        "g b"   '(magit-branch :which-key "Magit switch branch")
        "g C"   '(magit-clone :which-key "Magit clone")
        "g F"   '(magit-fetch :which-key "Magit fetch"))
+(setq magit-display-buffer-function
+      (lambda (buffer)
+        (display-buffer
+         buffer
+         (cond ((and (derived-mode-p 'magit-mode)
+                     (eq (with-current-buffer buffer major-mode)
+                         'magit-status-mode))
+                nil)
+               ((memq (with-current-buffer buffer major-mode)
+                      '(magit-process-mode
+                        magit-revision-mode
+                        magit-diff-mode
+                        magit-stash-mode))
+                nil)
+               (t
+                '(display-buffer-same-window))))))
 
 ;; Scrolling
 (setq scroll-conservatively 101) 
@@ -310,7 +326,7 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-global-mode 1))
+  (projectile-mode 1))
 
 ;; Backup files
 (setq backup-directory-alist `(("." . "~/.local/saves")))
@@ -328,6 +344,7 @@
   :ensure t)
 (add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (setq haskell-process-type 'cabal-repl)
 (setq flycheck-ghc-args '("-dynamic"))
 
@@ -361,3 +378,11 @@
   (switch-to-buffer (get-buffer-create bufname))
   (if (= n 1) initial-major-mode))) ; 1, because n was incremented
 (global-set-key (kbd "C-c s") 'scratch)
+
+;; Bluespec
+(setq load-path
+	(append (list
+		"/home/russel/Applications/clones/bsc-emacs/bsv-mode"
+		)
+		load-path))
+(load "bsv-mode")
