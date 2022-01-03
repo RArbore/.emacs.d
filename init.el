@@ -339,15 +339,6 @@
   :ensure t
   :init (global-flycheck-mode))
 
-;; Haskell
-(use-package haskell-mode
-  :ensure t)
-(add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(setq haskell-process-type 'cabal-repl)
-(setq flycheck-ghc-args '("-dynamic"))
-
 ;; Powerline / modeline
 (setq load-path
 	(append (list
@@ -356,6 +347,19 @@
 		load-path))
 (load "powerline")
 (powerline-russel-evil-theme)
+
+;; Zig
+(autoload 'zig-mode "zig-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.zig\\'" . zig-mode))
+
+;; Haskell
+(use-package haskell-mode
+  :ensure t)
+;;(add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(setq haskell-process-type 'cabal-repl)
+(setq-default truncate-lines t)
 
 ;; Rainbow mode
 (use-package rainbow-mode
@@ -380,9 +384,9 @@
 (global-set-key (kbd "C-c s") 'scratch)
 
 ;; Bluespec
-(setq load-path
-	(append (list
-		"/home/russel/Applications/clones/bsc-emacs/bsv-mode"
-		)
-		load-path))
-(load "bsv-mode")
+;; (setq load-path
+;; 	(append (list
+;; 		"/home/russel/Applications/clones/bsc-emacs/bsv-mode"
+;; 		)
+;; 		load-path))
+;; (load "bsv-mode")
