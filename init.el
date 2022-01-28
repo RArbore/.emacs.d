@@ -348,6 +348,9 @@
 (load "powerline")
 (powerline-russel-evil-theme)
 
+;; C++
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20")))
+
 ;; Zig
 (autoload 'zig-mode "zig-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.zig\\'" . zig-mode))
