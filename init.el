@@ -40,7 +40,8 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection)))
+   '(flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
+ '(safe-local-variable-values '((c-basic-offset 2))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -326,7 +327,7 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-mode 1))
+  (projectile-global-mode))
 
 ;; Backup files
 (setq backup-directory-alist `(("." . "~/.local/saves")))
@@ -362,7 +363,7 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (setq haskell-process-type 'cabal-repl)
-(setq-default truncate-lines t)
+(setq-default toggle-truncate-lines t)
 
 ;; Rainbow mode
 (use-package rainbow-mode
