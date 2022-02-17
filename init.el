@@ -327,7 +327,15 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-global-mode))
+  (projectile-mode))
+(nvmap :prefix "SPC"
+       "r"   'projectile-test-project)
+
+;; YASnippet
+(use-package yasnippet 
+  :ensure t
+  :config
+  (yas-global-mode 1))
 
 ;; Backup files
 (setq backup-directory-alist `(("." . "~/.local/saves")))
