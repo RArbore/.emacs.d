@@ -40,8 +40,128 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
- '(safe-local-variable-values '((c-basic-offset 2))))
+   '(reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
+ '(safe-local-variable-values
+   '((eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			(concat "/usr/include/c++/11.2.0/")
+			(concat "/usr/include/c++/11.2.0/bits/")
+			(concat "/usr/include/c++/11.2.0/x86_64-pc-linux-gnu/")
+			(concat "/usr/include/c++/v1/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			(concat "/usr/include/c++/11.2.0/")
+			(concat "/usr/include/c++/11.2.0/bits/")
+			(concat "/usr/include/c++/11.2.0/x86_64-pc-linux-gnu/")
+			(concat "/usr/include/c++/v1/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			(concat "/usr/include/c++/11.2.0/")
+			(concat "/usr/include/c++/11.2.0/bits/")
+			(concat "/usr/include/c++/11.2.0/x86_64-pc-linux-gnu/")
+			(concat "/usr/include/c++/v1/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			(concat "/usr/include/c++/11.2.0/")
+			(concat "/usr/include/c++/11.2.0/bits/")
+			(concat "/usr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/")
+			(concat "/usr/include/c++/v1/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			(concat "/usr/include/c++/11.2.0/")
+			(concat "/usr/include/c++/11.2.0/bits/")
+			(concat "/usr/include/c++/v1/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			(concat "/usr/include/c++/11.2.0/")
+			(concat "/usr/include/c++/v1/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			(concat "/usr/include/c++/11.2.0/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")
+			("/usr/include/c++/11.2.0/"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local company-clang-arguments
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include"))))
+     (eval setq flycheck-clang-include-path
+	   (list
+	    (expand-file-name "include/")))
+     (c-basic-offset 2))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -358,7 +478,10 @@
 (powerline-russel-evil-theme)
 
 ;; C++
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++20")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-include-path
+					  (list (expand-file-name "/usr/include/c++/11.2.0/")))))
 
 ;; Zig
 (autoload 'zig-mode "zig-mode" nil t)
@@ -373,11 +496,19 @@
 (setq haskell-process-type 'cabal-repl)
 (setq-default toggle-truncate-lines t)
 
+;; Reformatter / Ormolu
+(use-package reformatter
+  :ensure t)
+
 ;; Rainbow mode
 (use-package rainbow-mode
   :ensure t
   :config
   (rainbow-mode))
+(push "/home/russel/.emacs.d/packages/ormolu.el" load-path)
+(load-library "ormolu")
+(nvmap :prefix "C-c"
+       "r"   'ormolu-format-buffer)
 
 ;; Scratch
 (defun scratch ()
@@ -396,9 +527,5 @@
 (global-set-key (kbd "C-c s") 'scratch)
 
 ;; Bluespec
-;; (setq load-path
-;; 	(append (list
-;; 		"/home/russel/Applications/clones/bsc-emacs/bsv-mode"
-;; 		)
-;; 		load-path))
-;; (load "bsv-mode")
+(push "/home/russel/.emacs.d/packages/bsv-mode.el" load-path)
+(load "bsv-mode")
