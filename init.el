@@ -40,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
+   '(yasnippet reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
  '(safe-local-variable-values
    '((eval let
 	   ((root
@@ -380,6 +380,8 @@
 (define-key evil-motion-state-map (kbd "SPC w j") 'evil-window-down)
 (define-key evil-motion-state-map (kbd "SPC w k") 'evil-window-up)
 (define-key evil-motion-state-map (kbd "SPC w l") 'evil-window-right)
+(define-key evil-motion-state-map (kbd "SPC w o") 'evil-window-rotate-downwards)
+(define-key evil-motion-state-map (kbd "SPC w p") 'evil-window-rotate-upwards)
 (define-key evil-motion-state-map (kbd "SPC w H") 'evil-window-move-far-left)
 (define-key evil-motion-state-map (kbd "SPC w J") 'evil-window-move-very-bottom)
 (define-key evil-motion-state-map (kbd "SPC w K") 'evil-window-move-very-top)
