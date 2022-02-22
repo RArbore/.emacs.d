@@ -451,7 +451,7 @@
   :config
   (projectile-mode))
 (nvmap :prefix "SPC"
-       "r"   'projectile-test-project)
+       "r"   'projectile-run-project)
 
 ;; YASnippet
 (use-package yasnippet 
