@@ -496,7 +496,10 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (setq haskell-process-type 'cabal-repl)
-(setq-default toggle-truncate-lines t)
+
+;; Truncate lines
+(nvmap :keymaps 'override :prefix "SPC"
+       "t"   'toggle-truncate-lines)
 
 ;; Reformatter / Ormolu
 (use-package reformatter
