@@ -51,6 +51,23 @@
 			(concat "-std=c++20")))
 	   (setq-local flycheck-clang-include-path
 		       (list
+			(concat root "include")))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
 			(concat root "include"))))
      (eval let
 	   ((root
@@ -504,16 +521,21 @@
 ;; Reformatter / Ormolu
 (use-package reformatter
   :ensure t)
+(push "/home/russel/.emacs.d/packages/ormolu.el" load-path)
+(load-library "ormolu")
+(nvmap :prefix "C-c"
+       "r"   'ormolu-format-buffer)
+
+;; Beacon mode
+(push "/home/russel/.emacs.d/packages/beacon.el" load-path)
+(load "beacon")
+(beacon-mode 1)
 
 ;; Rainbow mode
 (use-package rainbow-mode
   :ensure t
   :config
   (rainbow-mode))
-(push "/home/russel/.emacs.d/packages/ormolu.el" load-path)
-(load-library "ormolu")
-(nvmap :prefix "C-c"
-       "r"   'ormolu-format-buffer)
 
 ;; Scratch
 (defun scratch ()
@@ -534,3 +556,7 @@
 ;; Bluespec
 (push "/home/russel/.emacs.d/packages/bsv-mode.el" load-path)
 (load "bsv-mode")
+
+;; GLSL
+(push "/home/russel/.emacs.d/packages/glsl-mode.el" load-path)
+(load "glsl-mode")
