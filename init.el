@@ -4,9 +4,9 @@
 ;; MELPA packages
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
-;; (package-refresh-contents)
+	     '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+;;(package-refresh-contents)
 
 ;; use-package
 (unless (package-installed-p 'use-package)
@@ -40,9 +40,26 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(yasnippet reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
+   '(cargo rust-mode yasnippet reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
  '(safe-local-variable-values
    '((eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")))
+	   (setq-local flycheck-gcc-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-gcc-include-path
+		       (list
+			(concat root "include"))))
+     (eval let
 	   ((root
 	     (projectile-project-root)))
 	   (setq-local flycheck-clang-args
@@ -505,6 +522,19 @@
 ;; Zig
 (autoload 'zig-mode "zig-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.zig\\'" . zig-mode))
+
+;; Rust mode
+(use-package rust-mode
+  :ensure t
+  :mode "\\.rs\\'"
+  :config (setq rust-format-on-save t)
+  )
+(use-package cargo
+  :ensure t
+  :init
+  (add-hook 'rust-mode-hook 'cargo-minor-mode)
+  (add-hook 'toml-mode-hook 'cargo-minor-mode)
+  )
 
 ;; Haskell
 (use-package haskell-mode
