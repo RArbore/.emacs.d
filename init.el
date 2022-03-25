@@ -52,6 +52,33 @@
 	   (setq-local flycheck-clang-include-path
 		       (list
 			(concat root "include")))
+	   (setq-local flycheck-gcc-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-gcc-include-path
+		       (list
+			(concat root "include"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-gcc-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-gcc-include-path
+		       (list
+			(concat root "include"))))
+     (eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-I" root "include")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")))
 	   (setq-local flycheck-clang-args
 		       (list
 			(concat "-I" root "include")
@@ -481,6 +508,7 @@
 
 ;; C tabbing
 (setq-default c-basic-offset 4)
+(setq tab-stop-list (number-sequence 4 60 4))
 
 ;; Flycheck
 (use-package flycheck
