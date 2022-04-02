@@ -319,7 +319,6 @@
                "d j" '(dired-jump :which-key "Dired jump to current")
                "d p" '(peep-dired :which-key "Peep-dired"))
 (with-eval-after-load 'dired
-  ;;(define-key dired-mode-map (kbd "M-p") 'peep-dired)
   (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
   (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
   (evil-define-key 'normal peep-dired-mode-map (kbd "j") 'peep-dired-next-file)
@@ -328,12 +327,13 @@
 ;; Get file icons in dired
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 ;; With dired-open plugin, you can launch external programs for certain extensions
-;; For example, I set all .png files to open in 'sxiv' and all .mp4 files to open in 'mpv'
-(setq dired-open-extensions '(("gif" . "sxiv")
-                              ("jpg" . "sxiv")
-                              ("png" . "sxiv")
+;; For example, I set all .png files to open in 'feh' and all .mp4 files to open in 'mpv'
+(setq dired-open-extensions '(("gif" . "feh")
+                              ("jpg" . "feh")
+                              ("png" . "feh")
                               ("mkv" . "mpv")
-                              ("mp4" . "mpv")))
+                              ("mkv" . "mpv")
+                              ("pdf" . "zathura")))
 
 ;; File keybindings
 (nvmap :states '(normal visual) :keymaps 'override :prefix "SPC"
@@ -548,7 +548,6 @@
 ;; Haskell
 (use-package haskell-mode
   :ensure t)
-;;(add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (setq haskell-process-type 'cabal-repl)
