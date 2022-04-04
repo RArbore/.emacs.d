@@ -599,3 +599,6 @@
 (push "/home/russel/.emacs.d/packages/glsl-mode.el" load-path)
 (load "glsl-mode")
  
+;; WGSL
+(push "/home/russel/.emacs.d/packages/wgsl-mode.el" load-path)
+(load "wgsl-mode")
