@@ -38,11 +38,27 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
  '(org-agenda-files nil)
  '(package-selected-packages
    '(flycheck-rust cargo rust-mode yasnippet reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
  '(safe-local-variable-values
    '((eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat root "include")))
+	   (setq-local flycheck-gcc-args
+		       (list
+			(concat "-I" root "include")))
+	   (setq-local flycheck-gcc-include-path
+		       (list
+			(concat root "include"))))
+     (eval let
 	   ((root
 	     (projectile-project-root)))
 	   (setq-local flycheck-clang-args
@@ -131,7 +147,7 @@
 	   ((root
 	     (projectile-project-root)))
 	   (setq-local company-clang-arguments
-		      (list
+		       (list
 			(concat "-I" root "include")))
 	   (setq-local flycheck-clang-include-path
 		       (list
