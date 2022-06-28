@@ -622,3 +622,20 @@
 ;; WGSL
 (push "/home/russel/.emacs.d/packages/wgsl-mode.el" load-path)
 (load "wgsl-mode")
+
+;; Close compile buffer
+(defun bury-compile-buffer-if-successful (buffer string)
+  "Bury a compilation buffer if succeeded without warnings "
+  (if (and
+       (string-match "compilation" (buffer-name buffer))
+       (string-match "finished" string)
+       (not
+        (with-current-buffer buffer
+          (goto-char (point-min))
+          (search-forward "warning" nil t))))
+      (run-with-timer 1 nil
+                      (lambda (buf)
+                        (delete-windows-on buf)
+                        (bury-buffer buf))
+                      buffer)))
+(add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
