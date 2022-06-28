@@ -633,7 +633,7 @@
         (with-current-buffer buffer
           (goto-char (point-min))
           (search-forward "warning" nil t))))
-      (run-with-timer 1 nil
+      (run-with-timer 0 nil
                       (lambda (buf)
                         (delete-windows-on buf)
                         (bury-buffer buf))
