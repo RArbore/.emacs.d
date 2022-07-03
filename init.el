@@ -557,7 +557,7 @@
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
-(add-to-list 'exec-path "/home/russel/.cargo/bin")
+(add-to-list 'exec-path "/home/russel/.local/cargo/bin")
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
