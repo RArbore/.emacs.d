@@ -557,7 +557,6 @@
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
-(add-to-list 'exec-path "/home/russel/.local/cargo/bin")
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
@@ -639,3 +638,10 @@
                         (bury-buffer buf))
                       buffer)))
 (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
+
+;; Exec path from shell
+(use-package exec-path-from-shell
+  :ensure t)
+
+(exec-path-from-shell-copy-env "RUSTUP_HOME")
+(exec-path-from-shell-copy-env "CARGO_HOME")
