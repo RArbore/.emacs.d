@@ -643,5 +643,10 @@
 (use-package exec-path-from-shell
   :ensure t)
 
+(exec-path-from-shell-copy-env "PATH")
+
 (exec-path-from-shell-copy-env "RUSTUP_HOME")
 (exec-path-from-shell-copy-env "CARGO_HOME")
+
+(exec-path-from-shell-copy-env "GHCUP_USE_XDG_DIRS")
+(exec-path-from-shell-copy-env "STACK_ROOT")
