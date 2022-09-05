@@ -590,6 +590,12 @@
   :config
   (rainbow-mode))
 
+(use-package dumb-jump
+  :ensure t)
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+(nvmap :keymaps 'override :prefix "SPC"
+       "j"   'xref-find-definitions)
+
 ;; Scratch
 (defun scratch ()
   "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
