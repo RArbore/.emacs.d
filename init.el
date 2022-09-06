@@ -628,6 +628,14 @@
 (push "/home/russel/.emacs.d/packages/wgsl-mode.el" load-path)
 (load "wgsl-mode")
 
+;; Flex
+(push "/home/russel/.emacs.d/packages/flex.el" load-path)
+(load "flex")
+
+;; Bison
+(push "/home/russel/.emacs.d/packages/bison-mode.el" load-path)
+(load "bison-mode")
+
 ;; Close compile buffer
 (defun bury-compile-buffer-if-successful (buffer string)
   "Bury a compilation buffer if succeeded without warnings "
