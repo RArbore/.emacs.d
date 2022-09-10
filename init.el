@@ -631,14 +631,10 @@
 ;; Flex
 (push "/home/russel/.emacs.d/packages/flex.el" load-path)
 (load "flex")
-(autoload 'flex "flex" nil t)
-(add-to-list 'auto-mode-alist '("\\.flex\\'" . flex))
 
 ;; Bison
 (push "/home/russel/.emacs.d/packages/bison-mode.el" load-path)
 (load "bison-mode")
-(autoload 'bison-mode "bison-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.y\\'" . bison-mode))
 
 ;; Close compile buffer
 (defun bury-compile-buffer-if-successful (buffer string)
