@@ -24,25 +24,25 @@
 
 (require 'cl-lib)
 
-(defface powerline-active1 '((t (:foreground "#E7E7E7" :background "#2A3034" :inherit mode-line)))
+(defface powerline-active1 '((t (:foreground "#FBF1C7" :background "#282828" :inherit mode-line)))
   "Powerline face 1."
   :group 'powerline)
 
-(defface powerline-active2 '((t (:foreground "#E7E7E7" :background "#1C1F24" :inherit mode-line)))
+(defface powerline-active2 '((t (:foreground "#FBF1C7" :background "#1D2021" :inherit mode-line)))
   "Powerline face 2."
   :group 'powerline)
 
-(defface powerline-active3 '((t (:foreground "#E7E7E7" :background "#2A3034" :inherit mode-line)))
+(defface powerline-active3 '((t (:foreground "#FBF1C7" :background "#282828" :inherit mode-line)))
   "Powerline face 3."
   :group 'powerline)
 
 (defface powerline-inactive1
-  '((t (:foreground "#E7E7E7" :background "#1C1F24" :inherit mode-line-inactive)))
+  '((t (:foreground "#FBF1C7" :background "#1D2021" :inherit mode-line-inactive)))
   "Powerline face 1."
   :group 'powerline)
 
 (defface powerline-inactive2
-  '((t (:foreground "#E7E7E7" :background "#1C1F24" :inherit mode-line-inactive)))
+  '((t (:foreground "#FBF1C7" :background "#1D2021" :inherit mode-line-inactive)))
   "Powerline face 2."
   :group 'powerline)
 
@@ -594,63 +594,63 @@ mouse-1: Display Line and Column Mode Menu")
   '(progn
      (defface powerline-evil-insert-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#98BE65" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#B8BB26" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil insert state"
        :group 'powerline)
 
      (defface powerline-evil-normal-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#F74C66" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#FB4934" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil normal state"
        :group 'powerline)
 
      (defface powerline-evil-visual-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#FFA979" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#FABD2F" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil visual state"
        :group 'powerline)
 
      (defface powerline-evil-motion-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#2C97F4" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#83A598" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil motion state"
        :group 'powerline)
 
      (defface powerline-evil-emacs-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#C678DD" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#D3869D" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil emacs state"
        :group 'powerline)
 
      (defface powerline-evil-replace-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#1C1F24" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#1D2021" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil replace state"
        :group 'powerline)
 
      (defface powerline-evil-operator-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#74E2FF" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#458588" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil operator state"
        :group 'powerline)
 
      (defface powerline-evil-iedit-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#F74C66" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#FB4934" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil iedit state"
        :group 'powerline)
 
      (defface powerline-evil-iedit-insert-face
        '((((class color))
-          :foreground "#E7E7E7" :background "#11EEAB" :weight bold :inherit mode-line)
+          :foreground "#FBF1C7" :background "#8EC07C" :weight bold :inherit mode-line)
          (t (:weight bold)))
        "face to fontify evil iedit insert state"
        :group 'powerline)

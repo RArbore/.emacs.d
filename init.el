@@ -39,11 +39,34 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
+ '(custom-safe-themes
+   '(default))
  '(org-agenda-files nil)
  '(package-selected-packages
    '(flycheck-rust cargo rust-mode yasnippet reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
  '(safe-local-variable-values
    '((eval let
+	   ((root
+	     (projectile-project-root)))
+	   (setq-local flycheck-clang-args
+		       (list
+			(concat "-Iimgui")
+			(concat "-Iimgui/backends")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-clang-include-path
+		       (list
+			(concat "imgui")
+			(concat "imgui/backends")))
+	   (setq-local flycheck-gcc-args
+		       (list
+			(concat "-Iimgui")
+			(concat "-Iimgui/backends")
+			(concat "-std=c++20")))
+	   (setq-local flycheck-gcc-include-path
+		       (list
+			(concat "imgui")
+			(concat "imgui/backends"))))
+     (eval let
 	   ((root
 	     (projectile-project-root)))
 	   (setq-local flycheck-clang-args
