@@ -39,11 +39,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
- '(custom-safe-themes
-   '(default))
+ '(custom-safe-themes '(default))
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(flycheck-rust cargo rust-mode yasnippet reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
+   '(dumb-jump flycheck-rust cargo rust-mode yasnippet reformatter exec-path-from-shell flycheck peep-dired dired-open all-the-icons-dired vterm all-the-icons flycheck-haskell rainbow-mode powerline-evil haskell-mode projectile toc-org org-bullets dashboard magit markdown-mode general gcmh which-key melancholy-theme use-package evil-collection))
  '(safe-local-variable-values
    '((eval let
 	   ((root
@@ -243,15 +242,9 @@
  )
 
 ;; Fonts
-(set-face-attribute 'default nil
-		    :height 120
-		    :weight 'medium)
-(set-face-attribute 'variable-pitch nil
-		    :height 120
-		    :weight 'medium)
-(set-face-attribute 'fixed-pitch nil
-		    :height 120
-		    :weight 'medium)
+(custom-set-faces '(default ((t (:inherit nil :height 120 :family "Fira Mono")))))
+(custom-set-faces '(variable-pitch ((t (:inherit nil :height 120 :family "Fira Mono")))))
+(custom-set-faces '(fixed-pitch ((t (:inherit nil :height 120 :family "Fira Mono")))))
 
 ;; Zoom
 (global-set-key (kbd "C-=") 'text-scale-increase)
@@ -479,45 +472,6 @@
 ;; Load newer files
 (setq load-prefer-newer t)
 
-;; Org mode
-(add-hook 'org-mode-hook 'org-indent-mode)
-(setq org-directory "~/Documents/Org/"
-      org-agenda-files '("~/Documents/Org/Agenda.org")
-      org-default-notes-file (expand-file-name "Notes.org" org-directory)
-      org-ellipsis " ▼ "
-      org-log-done 'time
-      org-journal-dir "~/Documents/Org/Journal/"
-      org-journal-date-format "%B %d, %Y (%A) "
-      org-journal-file-format "%Y-%m-%d.org"
-      org-hide-emphasis-markers t)
-(setq org-src-preserve-indentation nil
-      org-src-tab-acts-natively t
-      org-edit-src-content-indentation 0)
-(use-package org-bullets
-  :ensure t)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(setq org-todo-keywords
-        '((sequence
-           "TODO(t)"
-           "BLOG(b)"
-           "GYM(g)"
-           "PROJ(p)"
-           "VIDEO(v)"
-           "WAIT(w)"
-           "|"
-           "DONE(d)"
-           "CANCELLED(c)")))
-(setq org-src-fontify-natively t
-    org-src-tab-acts-natively t
-    org-confirm-babel-evaluate nil
-    org-edit-src-content-indentation 0)
-(use-package toc-org
-  :ensure t
-  :commands toc-org-enable
-  :init (add-hook 'org-mode-hook 'toc-org-enable))
-(setq org-blank-before-new-entry (quote ((heading . nil)
-                                         (plain-list-item . nil))))
-
 ;; Projectile
 (use-package projectile
   :ensure t
@@ -687,3 +641,5 @@
 
 (exec-path-from-shell-copy-env "GHCUP_USE_XDG_DIRS")
 (exec-path-from-shell-copy-env "STACK_ROOT")
+
+(dashboard-open)
